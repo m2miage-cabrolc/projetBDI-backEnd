@@ -1,10 +1,9 @@
 package miagiles.gromed.repository;
 
-
-import miagiles.gromed.model.Utilisateur;
+import miagiles.gromed.model.GroupeGenerique;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long> {
+public interface GroupeGeneriqueRepository extends CrudRepository<GroupeGenerique, Long> {
 }

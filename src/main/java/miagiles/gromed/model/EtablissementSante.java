@@ -8,17 +8,17 @@ import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
-@Entity
+@Entity(name="etablisssementSante")
 public class EtablissementSante {
 
     @Id
-    @Column
+    @Column(name="id")
     private String etalissementID;
 
-    @Column
+    @Column(name="nom")
     private String nomEtablissement;
 
-    @Column
+    @Column(name="adresse")
     private String adresse;
 
     @OneToMany

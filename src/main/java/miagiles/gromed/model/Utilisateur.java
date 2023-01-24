@@ -3,7 +3,9 @@ package miagiles.gromed.model;
 
 import jakarta.persistence.*;
 
-@Entity
+import java.util.List;
+
+@Entity(name="Utilisateur")
 public class Utilisateur {
 
     public Utilisateur() {
@@ -17,7 +19,7 @@ public class Utilisateur {
     @Id
     @GeneratedValue
     @Column
-    private int id;
+    private long id;
 
     @Column
     private String adresseMail;
@@ -34,7 +36,10 @@ public class Utilisateur {
     @ManyToOne
     private EtablissementSante etablissementSante;
 
-    public int getId() {
+    @OneToMany
+    private List<Commande> commandes;
+
+    public long getId() {
         return id;
     }
 

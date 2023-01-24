@@ -1,10 +1,10 @@
 package miagiles.gromed.repository;
 
-
-import miagiles.gromed.model.Utilisateur;
+import jakarta.persistence.Entity;
+import miagiles.gromed.model.Medicament;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long> {
+public interface MedicamentRepository extends CrudRepository<Medicament, Long> {
 }
