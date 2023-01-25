@@ -18,11 +18,35 @@ public class Composition {
 
     @Id
     @ManyToOne
-    @JoinColumn(name="medicament")
+    @JoinColumn(name="codeCIS")
     private Medicament medicament;
 
     @Id
     @ManyToOne
-    @JoinColumn(name="substance")
+    @JoinColumn(name="code")
     private Substance substance;
+
+    public String getDosage() {
+        return dosage;
+    }
+
+    public void setDosage(String dosage) {
+        this.dosage = dosage;
+    }
+
+    public Substance getSubstance() {
+        return substance;
+    }
+
+    public void setMedicament(Medicament medicament) {
+        this.medicament = medicament;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 }

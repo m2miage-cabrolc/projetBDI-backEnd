@@ -1,11 +1,11 @@
 package miagiles.gromed.controller;
 
-import miagiles.gromed.repository.VoieAdministrationRepository;
+import miagiles.gromed.repository.AdministrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class VoieAdministrationController {
+public class AdministrationController {
     @Autowired
-    private VoieAdministrationRepository repository;
+    private AdministrationRepository repository;
 }

@@ -7,7 +7,7 @@ import jakarta.persistence.ManyToMany;
 
 import java.util.List;
 
-@Entity(name="presentation")
+@Entity(name="pres")
 public class Presentation {
     @Id
     @Column
@@ -16,7 +16,7 @@ public class Presentation {
     @Column
     private String libelle;
 
-    @Column
+    @Column(nullable = true)
     private float prix;
 
     @Column
@@ -48,8 +48,12 @@ public class Presentation {
         return prix;
     }
 
-    public void setPrix(float prix) {
-        this.prix = prix;
+
+    public void setPrix(Object prix) {
+        if(prix!=null){
+            this.prix = (float) prix;
+        }
+
     }
 
     public int getStockLogique() {
