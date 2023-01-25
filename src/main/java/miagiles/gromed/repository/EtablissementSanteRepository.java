@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EtablissementSanteRepository extends CrudRepository<EtablissementSante, String> {
+public interface EtablissementSanteRepository extends CrudRepository<EtablissementSante, Long> {
 
 
 }

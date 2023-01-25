@@ -7,8 +7,8 @@ import jakarta.persistence.ManyToMany;
 
 import java.util.List;
 
-@Entity(name="voie_administration")
-public class VoieAdministration {
+@Entity(name="administration")
+public class Administration {
     @Id
     @Column(name="code")
     private long code;

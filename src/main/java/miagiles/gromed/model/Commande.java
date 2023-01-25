@@ -34,7 +34,7 @@ public class Commande {
     private boolean valide;
 
     @ManyToMany
-    private List<PresentationCommande> presentations;
+    private List<PresentationDeCommande> presentations;
 
     public boolean isValide() {
         return valide;

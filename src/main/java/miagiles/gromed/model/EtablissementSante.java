@@ -8,12 +8,12 @@ import jakarta.persistence.OneToMany;
 
 import java.util.List;
 
-@Entity(name="etablisssementSante")
+@Entity(name="etablisssement")
 public class EtablissementSante {
 
     @Id
     @Column(name="id")
-    private String etalissementID;
+    private long etablissementID;
 
     @Column(name="nom")
     private String nomEtablissement;
@@ -21,8 +21,6 @@ public class EtablissementSante {
     @Column(name="adresse")
     private String adresse;
 
-    @OneToMany
-    private List<Utilisateur> utilisateurs;
 
     public String getNomEtablissement() {
         return nomEtablissement;
@@ -40,15 +38,12 @@ public class EtablissementSante {
         this.adresse = adresse;
     }
 
-    public List<Utilisateur> getUtilisateurs() {
-        return utilisateurs;
+    public long getEtablissementID() {
+        return etablissementID;
     }
 
-    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
-        this.utilisateurs = utilisateurs;
+    public void setEtablissementID(long etablissementID) {
+        this.etablissementID = etablissementID;
     }
 
-    public void addUtilisateur(Utilisateur utilisateur){
-        this.utilisateurs.add(utilisateur);
-    }
 }

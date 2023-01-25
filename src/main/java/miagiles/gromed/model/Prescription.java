@@ -7,8 +7,8 @@ import jakarta.persistence.ManyToMany;
 
 import java.util.List;
 
-@Entity(name="prescription_delivrance")
-public class PrescriptionDelivrance {
+@Entity(name="prescription")
+public class Prescription {
     @Id
     @Column(name="codeDP")
     private int codeDP;
