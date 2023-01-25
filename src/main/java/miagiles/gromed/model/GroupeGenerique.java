@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity
+@Entity(name="groupe_generique")
 public class GroupeGenerique {
     @Id
     @Column(name="id")

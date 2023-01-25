@@ -1,23 +1,28 @@
 package miagiles.gromed.model;
 
 import jakarta.persistence.*;
+import miagiles.gromed.model.key.SubstanceMedicament;
 
 import java.util.List;
 
-@Entity
+@Entity(name="composition")
+@IdClass(SubstanceMedicament.class)
 public class Composition {
 
-    @Id
-    @GeneratedValue
-    @Column(name="id")
-    private long id;
-
     @Column(name="dosage")
-    private float dosage;
+    private String dosage;
 
     @Column(name="reference_dosage")
     private String reference;
 
-    @ManyToMany
-    private List<Medicament> medicaments;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name="medicament")
+    private Medicament medicament;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name="substance")
+    private Substance substance;
 }

@@ -22,11 +22,6 @@ public class Medicament {
     @Column(name="denomination")
     private String denomination;
 
-    @ManyToMany
-    private List<Composition> compositions;
-
-    @ManyToMany
-    private List<VoieAdministration> voieAdministrations;
 
     @ManyToOne
     private FormePharma formePharma;
