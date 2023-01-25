@@ -1,24 +1,29 @@
 package miagiles.gromed.model;
 
 import jakarta.persistence.*;
+import miagiles.gromed.model.key.MedicamentGroupeGenerique;
 
 import java.util.List;
 
-@Entity
+@Entity(name="medicament_de_groupe_generique")
+@IdClass(MedicamentGroupeGenerique.class)
 public class MedicamentDeGroupeGenerique {
-    @Id
-    @GeneratedValue
-    @Column(name="id")
-    private long id;
+
 
     @Column(name="type")
     private String type;
 
-    @OneToMany(fetch=FetchType.LAZY)
-    private List<Medicament> medicaments;
-
-    @ManyToOne(fetch=FetchType.LAZY)
+    @Id
+    @ManyToOne
+    @JoinColumn(name="groupe_generique")
     private GroupeGenerique groupeGenerique;
+
+    @Id
+    @OneToOne
+    @JoinColumn(name="medicament")
+    private Medicament medicament;
+
+
 
 
 }

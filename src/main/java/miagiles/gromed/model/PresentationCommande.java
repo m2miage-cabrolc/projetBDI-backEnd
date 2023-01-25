@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.ManyToMany;
 import java.util.List;
 
-@Entity(name="presentationCommande")
+@Entity(name="presentation_commande")
 public class PresentationCommande {
     @Id
     @GeneratedValue

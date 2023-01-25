@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity(name="Utilisateur")
+@Entity(name="utilisateur")
 public class Utilisateur {
 
     public Utilisateur() {
