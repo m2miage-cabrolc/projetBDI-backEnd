@@ -1,6 +1,7 @@
 package miagiles.gromed.repository;
 
 
+import miagiles.gromed.entity.Commande;
 import miagiles.gromed.entity.Utilisateur;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,4 +16,6 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
 
     //@Query(value = "select * from utilisateur  where adresseMail =:adrresseMail",nativeQuery = true)
     //Utilisateur findUserByMail(String adresseMail);
+
+    public Commande findPanier();
 }
