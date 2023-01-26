@@ -11,12 +11,12 @@ public class PresentationDeCommande {
     private int quantite;
 
     @Id
-    @JoinColumn(name="commande")
+    @JoinTable(name="commande")
     @ManyToOne
     private Commande commande;
 
     @Id
-    @JoinColumn(name="presentation")
+    @JoinTable(name="pres")
     @ManyToOne
     private Presentation presentation;
 

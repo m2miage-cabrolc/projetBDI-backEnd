@@ -33,9 +33,6 @@ public class Commande {
     @Column(name="isValid")
     private boolean valide;
 
-    @ManyToMany
-    private List<PresentationDeCommande> presentations;
-
     public boolean isValide() {
         return valide;
     }

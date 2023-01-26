@@ -74,4 +74,8 @@ public class Utilisateur {
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public void setEtablissementSante(EtablissementSante etablissementSante) {
+        this.etablissementSante = etablissementSante;
+    }
 }

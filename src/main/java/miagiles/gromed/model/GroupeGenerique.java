@@ -13,6 +13,11 @@ public class GroupeGenerique {
     @Column(name="libelle")
     private String libelle;
 
-    @OneToMany
-    private List<MedicamentDeGroupeGenerique> medicaments;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
 }
