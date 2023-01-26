@@ -1,7 +1,6 @@
 package miagiles.gromed.repository;
 
-import jakarta.persistence.Entity;
-import miagiles.gromed.model.Medicament;
+import miagiles.gromed.entity.Medicament;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

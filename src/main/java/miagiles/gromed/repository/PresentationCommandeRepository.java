@@ -1,7 +1,7 @@
 package miagiles.gromed.repository;
 
 
-import miagiles.gromed.model.PresentationDeCommande;
+import miagiles.gromed.entity.PresentationDeCommande;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

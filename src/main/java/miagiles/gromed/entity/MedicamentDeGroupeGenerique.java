@@ -1,9 +1,7 @@
-package miagiles.gromed.model;
+package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
-import miagiles.gromed.model.key.MedicamentGroupeGenerique;
-
-import java.util.List;
+import miagiles.gromed.entity.key.MedicamentGroupeGenerique;
 
 @Entity(name="medicament_de_groupe_generique")
 @IdClass(MedicamentGroupeGenerique.class)

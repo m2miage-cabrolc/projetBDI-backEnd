@@ -1,6 +1,6 @@
 package miagiles.gromed.repository;
 
-import miagiles.gromed.model.Prescription;
+import miagiles.gromed.entity.Prescription;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

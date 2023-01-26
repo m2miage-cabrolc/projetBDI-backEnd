@@ -1,7 +1,7 @@
 package miagiles.gromed.repository;
 
 
-import miagiles.gromed.model.EtablissementSante;
+import miagiles.gromed.entity.EtablissementSante;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
