@@ -1,7 +1,6 @@
 package miagiles.gromed;
 
-import miagiles.gromed.model.EtablissementSante;
-import miagiles.gromed.model.Utilisateur;
+
 import miagiles.gromed.repository.EtablissementSanteRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
