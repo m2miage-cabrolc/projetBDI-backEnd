@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @NamedQueries({
-        @NamedQuery(name="Utilisateur.findPanier", query="select c from utilisateur u inner join u.commandes commande where commande.etatCommande='Panier' ")
+        @NamedQuery(name="Utilisateur.findPanier", query="select commande from utilisateur u inner join u.commandes commande where commande.etatCommande='Panier' ")
 })
 public class Utilisateur {
     @Id
