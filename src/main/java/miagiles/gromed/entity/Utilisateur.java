@@ -36,5 +36,9 @@ public class Utilisateur {
     @OneToMany
     private List<Commande> commandes;
 
+    public void addCommande(Commande commande){
+        commandes.add(commande);
+    }
+
 
 }
