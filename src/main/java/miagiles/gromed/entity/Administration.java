@@ -1,4 +1,4 @@
-package miagiles.gromed.model;
+package miagiles.gromed.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

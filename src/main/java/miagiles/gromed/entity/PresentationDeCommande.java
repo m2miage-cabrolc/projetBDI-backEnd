@@ -1,7 +1,7 @@
-package miagiles.gromed.model;
+package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
-import miagiles.gromed.model.key.PresentationCommande;
+import miagiles.gromed.entity.key.PresentationCommande;
 
 @Entity(name="pres_de_commande")
 @IdClass(PresentationCommande.class)

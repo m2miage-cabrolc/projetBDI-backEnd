@@ -1,6 +1,6 @@
 package miagiles.gromed.repository;
 
-import miagiles.gromed.model.GroupeGenerique;
+import miagiles.gromed.entity.GroupeGenerique;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

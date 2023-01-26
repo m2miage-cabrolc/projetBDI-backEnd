@@ -1,8 +1,7 @@
 package miagiles.gromed.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
-import miagiles.gromed.model.Commande;
-import miagiles.gromed.model.Composition;
+import miagiles.gromed.entity.Composition;
 import miagiles.gromed.repository.CompositionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

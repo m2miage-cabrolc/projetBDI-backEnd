@@ -1,9 +1,7 @@
-package miagiles.gromed.model;
+package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
-import miagiles.gromed.model.key.SubstanceMedicament;
-
-import java.util.List;
+import miagiles.gromed.entity.key.SubstanceMedicament;
 
 @Entity(name="composition")
 @IdClass(SubstanceMedicament.class)

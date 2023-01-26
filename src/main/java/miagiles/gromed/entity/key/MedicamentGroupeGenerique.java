@@ -1,9 +1,7 @@
-package miagiles.gromed.model.key;
+package miagiles.gromed.entity.key;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import miagiles.gromed.model.GroupeGenerique;
-import miagiles.gromed.model.Medicament;
 
 import java.io.Serializable;
 
