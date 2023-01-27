@@ -2,7 +2,6 @@ package miagiles.gromed.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 @Entity(name="medicament")
 public class Medicament {

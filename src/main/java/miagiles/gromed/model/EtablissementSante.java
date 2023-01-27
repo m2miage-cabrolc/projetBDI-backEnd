@@ -4,9 +4,6 @@ package miagiles.gromed.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-
-import java.util.List;
 
 @Entity(name="etablisssement")
 public class EtablissementSante {

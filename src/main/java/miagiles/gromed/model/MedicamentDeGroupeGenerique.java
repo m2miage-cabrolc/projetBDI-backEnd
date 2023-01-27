@@ -3,7 +3,6 @@ package miagiles.gromed.model;
 import jakarta.persistence.*;
 import miagiles.gromed.model.key.MedicamentGroupeGenerique;
 
-import java.util.List;
 
 @Entity(name="medicament_de_groupe_generique")
 @IdClass(MedicamentGroupeGenerique.class)

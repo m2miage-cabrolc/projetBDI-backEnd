@@ -3,7 +3,6 @@ package miagiles.gromed.model;
 import jakarta.persistence.*;
 import miagiles.gromed.model.key.SubstanceMedicament;
 
-import java.util.List;
 
 @Entity(name="composition")
 @IdClass(SubstanceMedicament.class)
