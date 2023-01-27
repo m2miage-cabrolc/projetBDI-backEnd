@@ -8,8 +8,8 @@ import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-@Log
+//@Service
+//s@Log
 public class CommandeService {
     @Autowired
     CommandeRepoitory commandeRepoitory;
@@ -22,26 +22,26 @@ public class CommandeService {
         return commandeRepoitory.findAll();
     }
 
-    public void createCommande(Commande commande , String userMail) {
-        try{
-            Utilisateur user = utilisateurService.getUtilisateur(userMail);
-            user.getCommandes().add(commande);
-            utilisateurRepository.save(user);
-            commandeRepoitory.save(commande);
-        }catch(Exception e){
-            log.info("Creation failed");
-        }
+    // public void createCommande(Commande commande , String userMail) {
+    //     try{
+    //         Utilisateur user = utilisateurService.getUtilisateur(userMail);
+    //         user.getCommandes().add(commande);
+    //         utilisateurRepository.save(user);
+    //         commandeRepoitory.save(commande);
+    //     }catch(Exception e){
+    //         log.info("Creation failed");
+    //     }
 
-    }
+    // }
 
-    public Commande getPanier(String userMail) {
-        Utilisateur user = utilisateurService.getUtilisateur(userMail);
-        Commande panier = new Commande() ;
-        for(Commande cmd : user.getCommandes()){
-            if(cmd.getEtatCommande()=="panier"){
-                panier=cmd;
-            }
-        }
-        return panier;
-    }
+    // public Commande getPanier(String userMail) {
+    //     Utilisateur user = utilisateurService.getUtilisateur(userMail);
+    //     Commande panier = new Commande() ;
+    //     for(Commande cmd : user.getCommandes()){
+    //         if(cmd.getEtatCommande()=="panier"){
+    //             panier=cmd;
+    //         }
+    //     }
+    //     return panier;
+    // }
 }

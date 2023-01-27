@@ -7,19 +7,29 @@ import miagiles.gromed.entity.key.PresentationCommande;
 @IdClass(PresentationCommande.class)
 public class PresentationDeCommande {
 
+
+
     @Column(name="quantite")
     private int quantite;
 
     @Id
-    @JoinColumn(name="commande")
+    @JoinTable(name="commande")
     @ManyToOne
     private Commande commande;
 
     @Id
-    @JoinColumn(name="presentation")
+    @JoinTable(name="pres")
     @ManyToOne
     private Presentation presentation;
 
+
+    public void setCommande(Commande commande) {
+        this.commande = commande;
+    }
+
+    public void setPresentation(Presentation presentation) {
+        this.presentation = presentation;
+    }
 
     public int getQuantite() {
         return quantite;
@@ -28,6 +38,7 @@ public class PresentationDeCommande {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+
 
 
 }

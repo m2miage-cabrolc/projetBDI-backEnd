@@ -11,8 +11,10 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@NamedQueries({
+        @NamedQuery(name="Utilisateur.findPanier", query="select commande from utilisateur u inner join u.commandes commande where commande.etatCommande='Panier' ")
+})
 public class Utilisateur {
-
     @Id
     @GeneratedValue
     @Column
@@ -35,6 +37,10 @@ public class Utilisateur {
 
     @OneToMany
     private List<Commande> commandes;
+
+    public void addCommande(Commande commande){
+        commandes.add(commande);
+    }
 
 
 }
