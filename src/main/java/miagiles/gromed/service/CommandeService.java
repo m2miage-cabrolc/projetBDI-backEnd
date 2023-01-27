@@ -3,7 +3,7 @@ package miagiles.gromed.service;
 import lombok.extern.java.Log;
 import miagiles.gromed.entity.Commande;
 import miagiles.gromed.entity.Utilisateur;
-import miagiles.gromed.repository.CommandeRepoitory;
+import miagiles.gromed.repository.CommandeRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,14 +12,14 @@ import org.springframework.stereotype.Service;
 //s@Log
 public class CommandeService {
     @Autowired
-    CommandeRepoitory commandeRepoitory;
+    CommandeRepository commandeRepository;
     @Autowired
     UtilisateurService utilisateurService;
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
     public Iterable<Commande> findAll(){
-        return commandeRepoitory.findAll();
+        return commandeRepository.findAll();
     }
 
     // public void createCommande(Commande commande , String userMail) {

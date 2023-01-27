@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CommandeRepoitory extends CrudRepository<Commande, Long> {
+public interface CommandeRepository extends CrudRepository<Commande, Long> {
 
 }
