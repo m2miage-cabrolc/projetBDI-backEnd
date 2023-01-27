@@ -2,6 +2,7 @@ package miagiles.gromed.entity.key;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.JoinTable;
 
 import java.io.Serializable;
 
@@ -9,9 +10,11 @@ import java.io.Serializable;
 public class MedicamentGroupeGenerique implements Serializable {
 
     @Column(name="medicament")
+    @JoinTable(name="medicament")
     private long medicament;
 
     @Column(name="groupe_generique")
+    @JoinTable(name="groupe_generique")
     private long groupeGenerique;
 
     public long getGroupeGenerique() {

@@ -4,8 +4,10 @@ import jakarta.persistence.*;
 import miagiles.gromed.entity.key.SubstanceMedicament;
 
 @Entity(name="composition")
-@IdClass(SubstanceMedicament.class)
 public class Composition {
+
+    @EmbeddedId
+    private SubstanceMedicament substanceMedicament;
 
     @Column(name="dosage")
     private String dosage;
@@ -14,15 +16,6 @@ public class Composition {
     private String reference;
 
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name="codeCIS")
-    private Medicament medicament;
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name="code")
-    private Substance substance;
 
     public String getDosage() {
         return dosage;
@@ -32,13 +25,6 @@ public class Composition {
         this.dosage = dosage;
     }
 
-    public Substance getSubstance() {
-        return substance;
-    }
-
-    public void setMedicament(Medicament medicament) {
-        this.medicament = medicament;
-    }
 
     public String getReference() {
         return reference;

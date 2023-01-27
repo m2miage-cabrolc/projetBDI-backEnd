@@ -2,12 +2,19 @@ package miagiles.gromed.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import miagiles.gromed.entity.Commande;
+import miagiles.gromed.entity.Presentation;
+import miagiles.gromed.entity.PresentationDeCommande;
 import miagiles.gromed.entity.Utilisateur;
+import miagiles.gromed.entity.key.PresentationCommande;
 import miagiles.gromed.repository.CommandeRepository;
+import miagiles.gromed.repository.PresentationCommandeRepository;
+import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @RestController
@@ -19,6 +26,12 @@ public class CommandeController {
 
     @Autowired
     UtilisateurRepository utilisateurRepository;
+
+    @Autowired
+    PresentationCommandeRepository presentationCommandeRepository;
+
+    @Autowired
+    PresentationRepository presentationRepository;
 
     // @Autowired
     // private CommandeService;
@@ -37,7 +50,7 @@ public class CommandeController {
     // }
 
     @PostMapping("/{user}/create_panier")
-    public ResponseEntity<Utilisateur> createCommande(@PathVariable(value="user") long id, HttpServletResponse response){
+    public ResponseEntity<Commande> createCommande(@PathVariable(value="user") long id,HttpServletResponse response){
         Commande commande = new Commande();
         commande.setEtatCommande("Panier");
         Utilisateur user = null;
@@ -47,7 +60,19 @@ public class CommandeController {
             repository.save(commande);
         }
 
-        return ResponseEntity.ok(utilisateurRepository.save(user));
+        Commande res = repository.save(commande);
+
+        utilisateurRepository.save(user);
+
+        return ResponseEntity.ok(res);
     }
+
+    @PostMapping("{user}/addToCart")
+    public ResponseEntity<PresentationDeCommande> addToCart(@PathVariable(value="user") long id,@RequestBody PresentationDeCommande pc,HttpServletResponse response){
+
+        return ResponseEntity.ok(presentationCommandeRepository.save(pc));
+
+    }
+
 
 }
