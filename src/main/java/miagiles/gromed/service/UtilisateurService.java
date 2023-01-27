@@ -21,6 +21,6 @@ public class UtilisateurService {
     }
 
     public boolean getIfExisteUtilisateur(String adresseMail , String mdp) {
-        return utilisateurRepository.findByAdresseMailAndMotDePasse(adresseMail,mdp)==null;
+        return utilisateurRepository.findByAdresseMailAndMotDePasse(adresseMail,mdp)!=null;
     }
 }
