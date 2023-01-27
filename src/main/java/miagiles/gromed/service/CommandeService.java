@@ -7,14 +7,16 @@ import miagiles.gromed.repository.CommandeRepoitory;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
 
 @Service
 @Log
 public class CommandeService {
     @Autowired
     CommandeRepoitory commandeRepoitory;
-    @Autowired
-    UtilisateurService utilisateurService;
+
     @Autowired
     UtilisateurRepository utilisateurRepository;
 
@@ -22,12 +24,11 @@ public class CommandeService {
         return commandeRepoitory.findAll();
     }
 
-    public void createCommande(Commande commande , String userMail) {
+    public void createCommande(Commande commande ) {
         try{
-            Utilisateur user = utilisateurService.getUtilisateur(userMail);
-            user.getCommandes().add(commande);
-            utilisateurRepository.save(user);
+
             commandeRepoitory.save(commande);
+
         }catch(Exception e){
             log.info("Creation failed");
         }
@@ -35,10 +36,10 @@ public class CommandeService {
     }
 
     public Commande getPanier(String userMail) {
-        Utilisateur user = utilisateurService.getUtilisateur(userMail);
-        Commande panier = new Commande() ;
+        Utilisateur user = utilisateurRepository.findByAdresseMail(userMail);
+        Commande panier =null ;
         for(Commande cmd : user.getCommandes()){
-            if(cmd.getEtatCommande()=="panier"){
+            if(cmd.getEtatCommande().equals("Panier")){
                 panier=cmd;
             }
         }

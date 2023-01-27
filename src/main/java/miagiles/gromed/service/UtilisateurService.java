@@ -17,10 +17,10 @@ public class UtilisateurService {
     }
 
     public Utilisateur getUtilisateur(String adresseMail ) {
-        return utilisateurRepository.findUserByMail(adresseMail);
+        return utilisateurRepository.findByAdresseMail(adresseMail);
     }
 
     public boolean getIfExisteUtilisateur(String adresseMail , String mdp) {
-        return utilisateurRepository.findUserByMailAndPasswd(adresseMail,mdp)==null;
+        return utilisateurRepository.findByAdresseMailAndMotDePasse(adresseMail,mdp)==null;
     }
 }

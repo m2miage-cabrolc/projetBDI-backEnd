@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import miagiles.gromed.entity.Commande;
 import miagiles.gromed.service.CommandeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,11 +21,15 @@ public class CommandeController {
         return ResponseEntity.ok( commandeService.findAll() );
     }
     @PostMapping("/createCommande")
-    public void createCommande(@RequestBody Commande commande , String userMail){
-        commandeService.createCommande(commande, userMail);
+    public void createCommande(@RequestBody Commande commande ){
+        commandeService.createCommande(commande);
     }
-    @GetMapping("/getCommande")
-    public Commande getPanier(String userMail){
-        return  commandeService.getPanier(userMail);
+    @GetMapping("/getPanier")
+    public ResponseEntity<Commande> getPanier(String userMail){
+        Commande panier = commandeService.getPanier(userMail);
+        if(panier==null){
+            return (ResponseEntity<Commande>) ResponseEntity.internalServerError();
+        }
+        return  ResponseEntity.ok(panier);
     }
 }

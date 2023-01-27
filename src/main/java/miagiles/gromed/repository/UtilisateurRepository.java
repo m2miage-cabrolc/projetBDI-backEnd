@@ -7,12 +7,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long> {
-    @Query(value = "select * from utilisateur  where adresseMail =:adrresseMail and motDePasse:=mdp",nativeQuery = true)
-    Utilisateur findUserByMailAndPasswd(@Param("adresseMail") String adresseMail , @Param("mdp") String mdp);
+
+    Utilisateur findByAdresseMail(String adresseMail);
+
+    Utilisateur findByAdresseMailAndMotDePasse(String adresseMail, String motDePasse);
 
 
-    @Query(value = "select * from utilisateur  where adresseMail =:adrresseMail",nativeQuery = true)
-    Utilisateur findUserByMail(String adresseMail);
 }
