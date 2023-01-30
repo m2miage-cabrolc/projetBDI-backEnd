@@ -1,7 +1,7 @@
-package miagiles.gromed.model;
+
+package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
-
 
 @Entity(name="medicament")
 public class Medicament {
