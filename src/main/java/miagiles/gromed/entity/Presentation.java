@@ -25,9 +25,6 @@ public class Presentation {
     @Column
     private int stockPhysique;
 
-    @ManyToMany
-    private List<Medicament> medicaments;
-
     public long getCodeCIP7() {
         return codeCIP7;
     }
