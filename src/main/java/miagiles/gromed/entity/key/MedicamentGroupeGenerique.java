@@ -9,11 +9,11 @@ import java.io.Serializable;
 @Embeddable
 public class MedicamentGroupeGenerique implements Serializable {
 
-    @Column(name="medicament")
-    @JoinTable(name="medicament")
+    @Column(name="codeCIS")
+    @JoinTable(name="med")
     private long medicament;
 
-    @Column(name="groupe_generique")
+    @Column(name="id")
     @JoinTable(name="groupe_generique")
     private long groupeGenerique;
 

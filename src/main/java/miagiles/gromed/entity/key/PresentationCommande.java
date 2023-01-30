@@ -9,11 +9,11 @@ import java.io.Serializable;
 
 @Embeddable
 public class PresentationCommande implements Serializable {
-    @Column(name="presentation")
+    @Column(name="codeCIP7")
     @JoinTable(name="pres")
     private long presentation;
 
-    @Column(name="commande")
+    @Column(name="numeroCommande")
     @JoinTable(name="commande")
     private long commande;
 
