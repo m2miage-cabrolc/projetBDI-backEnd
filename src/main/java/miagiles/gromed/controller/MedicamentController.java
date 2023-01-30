@@ -8,4 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 public class MedicamentController {
     @Autowired
     private MedicamentRepository repository;
+
 }

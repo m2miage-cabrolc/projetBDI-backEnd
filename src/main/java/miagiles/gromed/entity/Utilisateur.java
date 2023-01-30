@@ -12,7 +12,6 @@ import java.util.List;
 @Getter
 @Setter
 public class Utilisateur {
-
     @Id
     @GeneratedValue
     @Column
@@ -35,6 +34,21 @@ public class Utilisateur {
 
     @OneToMany
     private List<Commande> commandes;
+
+    public void addCommande(Commande commande){
+        commandes.add(commande);
+    }
+
+
+    public Commande getPanier(){
+        Commande res = null;
+        for (Commande c : this.commandes){
+            if(c.getEtatCommande().equals("Panier")){
+                res = c;
+            }
+        }
+        return res;
+    }
 
 
 }
