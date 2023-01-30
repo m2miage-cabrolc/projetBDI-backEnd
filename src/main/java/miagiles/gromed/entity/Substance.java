@@ -31,6 +31,10 @@ public class Substance {
     public void setNatureComposant(String natureComposant) {
         this.natureComposant = natureComposant;
     }
+    
+    public void setCodeSubstance(long codeSubstance) {
+        this.codeSubstance = codeSubstance;
+    }
 
     public long getCodeSubstance() {
         return codeSubstance;

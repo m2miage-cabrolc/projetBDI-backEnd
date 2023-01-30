@@ -16,11 +16,11 @@ public class UtilisateurService {
     //     return utilisateurRepository.findAll();
     // }
 
-    // public Utilisateur getUtilisateur(String adresseMail ) {
-    //     return utilisateurRepository.findUserByMail(adresseMail);
-    // }
+    public Utilisateur getUtilisateur(String adresseMail ) {
+        return utilisateurRepository.findByAdresseMail(adresseMail);
+    }
 
-    // public boolean getIfExisteUtilisateur(String adresseMail , String mdp) {
-    //     return utilisateurRepository.findUserByMailAndPasswd(adresseMail,mdp)==null;
-    // }
+    public boolean getIfExisteUtilisateur(String adresseMail , String mdp) {
+        return utilisateurRepository.findByAdresseMailAndMotDePasse(adresseMail,mdp)!=null;
+
 }

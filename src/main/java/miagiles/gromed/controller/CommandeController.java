@@ -11,6 +11,7 @@ import miagiles.gromed.repository.PresentationCommandeRepository;
 import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +24,7 @@ public class CommandeController {
 
     @Autowired
     CommandeRepository repository;
+
 
     @Autowired
     UtilisateurRepository utilisateurRepository;

@@ -16,21 +16,25 @@ public class Composition {
     private String reference;
 
 
+    @Id
+    @ManyToOne
+    @JoinTable(name="medicament")
+    private Medicament medicament;
 
-    public String getDosage() {
-        return dosage;
-    }
+    @Id
+    @ManyToOne
+    @JoinTable(name="substance")
+    private Substance substance;
 
-    public void setDosage(String dosage) {
-        this.dosage = dosage;
-    }
+
 
 
     public String getReference() {
         return reference;
     }
 
-    public void setReference(String reference) {
-        this.reference = reference;
+    public Medicament getMedicament() {
+        return medicament;
     }
+
 }
