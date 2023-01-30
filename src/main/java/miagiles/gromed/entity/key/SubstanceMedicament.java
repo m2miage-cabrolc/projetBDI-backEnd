@@ -14,7 +14,7 @@ public class SubstanceMedicament implements Serializable {
     @JoinTable(name="med")
     private long medicament;
 
-    @Column(name="substance")
+    @Column(name="code")
     @JoinTable(name="substance")
     private long substance;
 
