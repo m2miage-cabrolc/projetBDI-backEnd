@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long> {
+<<<<<<< HEAD
     //@Query(value = "select * from utilisateur  where adresseMail =:adrresseMail and motDePasse:=mdp",nativeQuery = true)
     //Utilisateur findUserByMailAndPasswd(@Param("adresseMail") String adresseMail , @Param("mdp") String mdp);
 
@@ -17,4 +18,7 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
     //@Query(value = "select * from utilisateur  where adresseMail =:adrresseMail",nativeQuery = true)
     //Utilisateur findUserByMail(String adresseMail);
     
+=======
+
+>>>>>>> ecdeec4 (fix utilisateur)
 }
