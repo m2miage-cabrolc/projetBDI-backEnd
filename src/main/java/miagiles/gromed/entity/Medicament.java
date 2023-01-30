@@ -2,7 +2,7 @@ package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
 
-@Entity(name="medicament")
+@Entity(name="med")
 public class Medicament {
 
     public Medicament() {
