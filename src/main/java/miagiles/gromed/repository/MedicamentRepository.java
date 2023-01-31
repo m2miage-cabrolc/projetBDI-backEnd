@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface MedicamentRepository extends CrudRepository<Medicament, Long> {
-    @Query(value = "select * from medicament m where m.denomination LIKE ':prefix%' ",nativeQuery = true)
+    @Query(value = "select * from medicament m where m.denomination LIKE :prefix% ",nativeQuery = true)
     public List<Medicament> getMedicamentByDenomination(@Param("prefix") String prefix);
 }

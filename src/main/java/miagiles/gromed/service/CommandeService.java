@@ -3,7 +3,7 @@ package miagiles.gromed.service;
 import lombok.extern.java.Log;
 import miagiles.gromed.entity.Commande;
 import miagiles.gromed.entity.Utilisateur;
-import miagiles.gromed.repository.CommandeRepoitory;
+import miagiles.gromed.repository.CommandeRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Log
 public class CommandeService {
     @Autowired
-    CommandeRepoitory commandeRepoitory;
+    CommandeRepository commandeRepoitory;
 
     @Autowired
     UtilisateurRepository utilisateurRepository;
