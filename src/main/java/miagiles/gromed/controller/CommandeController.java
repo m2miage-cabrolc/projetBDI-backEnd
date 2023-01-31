@@ -2,7 +2,11 @@ package miagiles.gromed.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import miagiles.gromed.entity.Commande;
+import miagiles.gromed.entity.Presentation;
+import miagiles.gromed.entity.PresentationDeCommande;
+import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.service.CommandeService;
+import miagiles.gromed.service.PresentationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
@@ -31,5 +35,16 @@ public class CommandeController {
             return (ResponseEntity<Commande>) ResponseEntity.internalServerError();
         }
         return  ResponseEntity.ok(panier);
+    }
+
+
+    @GetMapping("/validerPanier")
+    public ResponseEntity<String> validerPanier(String userMail){
+        String res = commandeService.validerCommande(userMail);
+        if(!res.equals("Commande validée")){
+            return (ResponseEntity<String>) ResponseEntity.internalServerError();
+        }
+
+        return ResponseEntity.ok(res);
     }
 }
