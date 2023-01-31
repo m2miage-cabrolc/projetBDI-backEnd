@@ -6,18 +6,20 @@ import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.entity.PresentationDeCommande;
 import miagiles.gromed.entity.Utilisateur;
 import miagiles.gromed.repository.CommandeRepository;
+import miagiles.gromed.repository.PresentationCommandeRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import miagiles.gromed.repository.PresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
 
 @Service
 @Log
 public class CommandeService {
     @Autowired
-    CommandeRepoitory commandeRepository;
+    CommandeRepository commandeRepository;
 
     @Autowired
     UtilisateurRepository utilisateurRepository;
@@ -27,6 +29,9 @@ public class CommandeService {
 
     @Autowired
     PresentationRepository presentationRepository;
+
+     @Autowired
+    PresentationCommandeRepository presentationCommandeRepository;
 
     public Iterable<Commande> findAll(){
 
@@ -62,7 +67,9 @@ public class CommandeService {
         if(panier==null){
             return "Erreur";
         }
-        for(PresentationDeCommande p : panier.getPresentations()){
+        List<PresentationDeCommande> listPresentationCommande =presentationCommandeRepository.findByPresentationCommande_Commande(panier.getNumeroCommande());
+
+        for(PresentationDeCommande p : listPresentationCommande){
 
             Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
             try {
@@ -70,7 +77,7 @@ public class CommandeService {
                 presentationRepository.save(presentation);
 
             } catch(Exception e) {
-                if(e.getMessage().equals("Le stock logique ne peut pas être inférieur à 0")) {
+                if(e.getMessage().equals("Le stock logique ne peut pas ï¿½tre infï¿½rieur ï¿½ 0")) {
                     System.out.println("Impossible de diminuer le stock logique !");
                 }
             }
@@ -80,6 +87,6 @@ public class CommandeService {
         panier.setEtatCommande("en cours");
         commandeRepository.save(panier);
 
-        return "Commande validée";
+        return "Commande validÃ©e";
     }
 }
