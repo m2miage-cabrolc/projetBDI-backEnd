@@ -5,11 +5,13 @@ import miagiles.gromed.repository.MedicamentRepository;
 import miagiles.gromed.service.MedicamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
+@RequestMapping(value="/api/meds")
 public class MedicamentController {
     @Autowired
     private MedicamentService medicamentService ;
@@ -19,7 +21,7 @@ public class MedicamentController {
         return medicamentService.getMedicaments(prefix);
     }
 
-    @GetMapping("/medicaments")
+    @GetMapping("/")
     public Iterable<Medicament> getMedicaments(){
         return medicamentService.getAllMedicaments();
     }
