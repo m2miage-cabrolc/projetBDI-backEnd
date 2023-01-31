@@ -15,4 +15,7 @@ public interface PresentationRepository extends CrudRepository<Presentation, Lon
 
     @Query("SELECT p.medicaments from pres p join p.medicaments m where m.denomination LIKE %:denom%")
     Iterable<Medicament> findMedsByDenom (@Param("denom") String denom);
+
+    Presentation findByCodeCIP7(Long codeCIP7);
+
 }
