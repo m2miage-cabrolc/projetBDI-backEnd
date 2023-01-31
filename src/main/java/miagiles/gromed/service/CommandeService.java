@@ -6,8 +6,8 @@ import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.entity.PresentationDeCommande;
 import miagiles.gromed.entity.Utilisateur;
 import miagiles.gromed.repository.CommandeRepository;
-import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
+import miagiles.gromed.repository.PresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Log
 public class CommandeService {
     @Autowired
-    CommandeRepository commandeRepoitory;
+    CommandeRepoitory commandeRepository;
 
     @Autowired
     UtilisateurRepository utilisateurRepository;
@@ -29,13 +29,15 @@ public class CommandeService {
     PresentationRepository presentationRepository;
 
     public Iterable<Commande> findAll(){
-        return commandeRepoitory.findAll();
+
+        return commandeRepository.findAll();
     }
 
     public void createCommande(Commande commande ) {
         try{
 
-            commandeRepoitory.save(commande);
+
+            commandeRepository.save(commande);
 
         }catch(Exception e){
             log.info("Creation failed");
@@ -68,7 +70,7 @@ public class CommandeService {
                 presentationRepository.save(presentation);
 
             } catch(Exception e) {
-                if(e.getMessage().equals("Le stock logique ne peut pas Ãªtre infÃ©rieur Ã  0")) {
+                if(e.getMessage().equals("Le stock logique ne peut pas être inférieur à 0")) {
                     System.out.println("Impossible de diminuer le stock logique !");
                 }
             }
@@ -76,8 +78,8 @@ public class CommandeService {
 
         }
         panier.setEtatCommande("en cours");
-        commandeRepoitory.save(panier);
+        commandeRepository.save(panier);
 
-        return "Commande validÃ©e";
+        return "Commande validée";
     }
 }
