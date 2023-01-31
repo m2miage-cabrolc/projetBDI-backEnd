@@ -12,11 +12,13 @@ public class EtablissementSante {
     @Column(name="id")
     private long etablissementID;
 
+    @Column(name="adresse")
+    private String adresse;
+
     @Column(name="nom")
     private String nomEtablissement;
 
-    @Column(name="adresse")
-    private String adresse;
+    
 
 
     public String getNomEtablissement() {
