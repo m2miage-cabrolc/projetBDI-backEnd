@@ -26,16 +26,12 @@ public class PresentationCommandeController {
     @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-    @PutMapping("/{utilisateur}/ {qt}")
-    public ResponseEntity<PresentationDeCommande> updateCommande(@PathVariable(value="utilisateur") long id, @PathVariable(value="utilisateur") int qt, @RequestBody Presentation pres){
-        Commande commande = utilisateurRepository.findPanier();
 
-        PresentationDeCommande presentationDeCommande = new PresentationDeCommande();
-        presentationDeCommande.setCommande(commande);
-        presentationDeCommande.setPresentation(pres);
-        presentationDeCommande.setQuantite(qt);
 
-        return ResponseEntity.ok(repository.save(presentationDeCommande));
+    @PutMapping("/{utilisateur}/")
+    public ResponseEntity<PresentationDeCommande> updateCommande(@PathVariable(value="utilisateur") long id, @RequestBody Presentation pres){
+        Utilisateur user = utilisateurRepository.findById(id).get();
+        return null;
     }
 
 

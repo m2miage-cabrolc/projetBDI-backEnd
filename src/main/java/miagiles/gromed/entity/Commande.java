@@ -36,6 +36,8 @@ public class Commande {
     @Column(name="etatCommande")
     private String etatCommande;
 
+    @ManyToMany
+    private List<PresentationDeCommande> presentations;
 
 
 }
