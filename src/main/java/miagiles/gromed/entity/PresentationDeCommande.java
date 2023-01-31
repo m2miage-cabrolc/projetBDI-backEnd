@@ -1,25 +1,25 @@
 package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import miagiles.gromed.entity.key.PresentationCommande;
 
 @Entity(name="pres_de_commande")
-@IdClass(PresentationCommande.class)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class PresentationDeCommande {
+
+    @EmbeddedId
+    PresentationCommande presentationCommande;
+
 
     @Column(name="quantite")
     private int quantite;
-
-    @Id
-    @JoinColumn(name="commande")
-    @ManyToOne
-    private Commande commande;
-
-    @Id
-    @JoinColumn(name="presentation")
-    @ManyToOne
-    private Presentation presentation;
-
 
     public int getQuantite() {
         return quantite;
@@ -28,6 +28,7 @@ public class PresentationDeCommande {
     public void setQuantite(int quantite) {
         this.quantite = quantite;
     }
+
 
 
 }
