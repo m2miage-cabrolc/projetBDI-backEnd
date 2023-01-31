@@ -2,17 +2,18 @@
 package miagiles.gromed.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity(name="med")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Medicament {
 
-    public Medicament() {
-    }
-
-    public Medicament(long codeCIS, String denomination) {
-        this.codeCIS = codeCIS;
-        this.denomination = denomination;
-    }
 
     @Id
     @Column(name="codeCIS")
@@ -26,19 +27,4 @@ public class Medicament {
     private FormePharma formePharma;
 
 
-    public long getCodeCIS() {
-        return codeCIS;
-    }
-
-    public void setCodeCIS(long codeCIS) {
-        this.codeCIS = codeCIS;
-    }
-
-    public String getDenomination() {
-        return denomination;
-    }
-
-    public void setDenomination(String denomination) {
-        this.denomination = denomination;
-    }
 }
