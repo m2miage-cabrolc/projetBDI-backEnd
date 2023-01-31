@@ -28,7 +28,7 @@ public class PresentationController {
     }
 
     @GetMapping(value="/meds/{denom}")
-    public ResponseEntity<Iterable<Medicament>> getMeds(@PathVariable(value="denom") String denom, HttpServletResponse response){
+    public ResponseEntity<Iterable<Presentation>> getMeds(@PathVariable(value="denom") String denom, HttpServletResponse response){
 
         return ResponseEntity.ok(repository.findMedsByDenom(denom));
 
