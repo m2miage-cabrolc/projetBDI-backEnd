@@ -15,8 +15,8 @@ import java.util.List;
 @Setter
 public class Presentation {
 
-    @Version
-    private long version;
+    /*@Version
+    private long version;*/
     @Id
     @Column
     private long codeCIP7;
