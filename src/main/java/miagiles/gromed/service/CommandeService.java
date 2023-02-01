@@ -40,9 +40,13 @@ public class CommandeService {
 
     public void createCommande(Commande commande ) {
         try{
-
-
+            Utilisateur utilisateur = utilisateurRepository.findByAdresseMail(userMail);
+            Commande commande = new Commande();
+            commande.setEtatCommande("panier");
+            commande.setCommandeType(false);
             commandeRepository.save(commande);
+            utilisateur.addCommande(commande);
+            utilisateurRepository.save(utilisateur);
 
         }catch(Exception e){
             log.info("Creation failed");
