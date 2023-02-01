@@ -2,6 +2,8 @@ package miagiles.gromed.repository;
 
 import miagiles.gromed.entity.Medicament;
 import miagiles.gromed.entity.Presentation;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -20,9 +22,9 @@ public interface PresentationRepository extends CrudRepository<Presentation, Lon
     Iterable<Presentation> findMedsByDenom (@Param("denom") String denom);
 
 
-    /*@Query("SELECT p.codeCIP7, pm.codeCIS from pres p join pres.medicaments pm")
-    HashMap<Long,Long> findPresMeds();*/
 
     Presentation findByCodeCIP7(Long codeCIP7);
+
+    Page<Presentation> findAll(Pageable page);
 
 }

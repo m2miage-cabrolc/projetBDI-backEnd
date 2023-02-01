@@ -38,11 +38,15 @@ public class CommandeService {
         return commandeRepository.findAll();
     }
 
-    public void createCommande(Commande commande ) {
+    public void createPanier(String userMail) {
         try{
-
-
+            Utilisateur utilisateur = utilisateurRepository.findByAdresseMail(userMail);
+            Commande commande = new Commande();
+            commande.setEtatCommande("panier");
+            commande.setCommandeType(false);
             commandeRepository.save(commande);
+            utilisateur.addCommande(commande);
+            utilisateurRepository.save(utilisateur);
 
         }catch(Exception e){
             log.info("Creation failed");
@@ -54,7 +58,7 @@ public class CommandeService {
         Utilisateur user = utilisateurRepository.findByAdresseMail(userMail);
         Commande panier =null ;
         for(Commande cmd : user.getCommandes()){
-            if(cmd.getEtatCommande().equals("Panier")){
+            if(cmd.getEtatCommande().equals("panier")){
                 panier=cmd;
             }
         }
@@ -77,8 +81,9 @@ public class CommandeService {
                 presentationRepository.save(presentation);
 
             } catch(Exception e) {
-                if(e.getMessage().equals("Le stock logique ne peut pas �tre inf�rieur � 0")) {
-                    System.out.println("Impossible de diminuer le stock logique !");
+                if(e.getMessage().equals("Le stock logique ne peut pas être inférieur à 0")) {
+                    return "Articles hors-stock";
+                    //System.out.println("Impossible de diminuer le stock logique !");
                 }
             }
 

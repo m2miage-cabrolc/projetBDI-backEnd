@@ -1,5 +1,6 @@
 package miagiles.gromed.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import miagiles.gromed.entity.Commande;
 import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.entity.PresentationDeCommande;
@@ -9,12 +10,10 @@ import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/api/add_pres")
+@RestController
+@RequestMapping(value="/api/commande_pres")
 public class PresentationCommandeController {
 
     @Autowired
@@ -27,11 +26,16 @@ public class PresentationCommandeController {
     private UtilisateurRepository utilisateurRepository;
 
 
+    @GetMapping(value="/")
+    public ResponseEntity<Iterable<PresentationDeCommande>> getCommandePres(HttpServletResponse httpServletResponse){
+        return ResponseEntity.ok(repository.findAll());
+    }
 
-    @PutMapping("/{utilisateur}/")
-    public ResponseEntity<PresentationDeCommande> updateCommande(@PathVariable(value="utilisateur") long id, @RequestBody Presentation pres){
-        Utilisateur user = utilisateurRepository.findById(id).get();
-        return null;
+
+
+    @PostMapping("/addToCart")
+    public ResponseEntity<PresentationDeCommande> updateCommande(@RequestBody PresentationDeCommande pres){
+       return ResponseEntity.ok(repository.save(pres));
     }
 
 

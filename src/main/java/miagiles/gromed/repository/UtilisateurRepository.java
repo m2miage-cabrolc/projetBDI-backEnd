@@ -1,6 +1,7 @@
 package miagiles.gromed.repository;
 
 
+import miagiles.gromed.entity.Commande;
 import miagiles.gromed.entity.Utilisateur;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -15,6 +16,7 @@ public interface UtilisateurRepository extends CrudRepository<Utilisateur, Long>
     Utilisateur findByAdresseMail(String adresseMail);
 
     Utilisateur findByAdresseMailAndMotDePasse(String adresseMail, String motDePasse);
+
 
 
 }
