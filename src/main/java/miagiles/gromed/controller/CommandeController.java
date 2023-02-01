@@ -43,10 +43,6 @@ public class CommandeController {
     @GetMapping("/validerPanier")
     public ResponseEntity<ArrayList<Integer>> validerPanier(String userMail, boolean isForced){
         ArrayList<Integer> res = commandeService.validerCommande(userMail, isForced);
-        if(!res.equals("Commande validée")&& !res.equals("Articles hors-stock")){
-
-            return (ResponseEntity<ArrayList<Integer>>) ResponseEntity.internalServerError();
-        }
         return ResponseEntity.ok(res);
     }
 }
