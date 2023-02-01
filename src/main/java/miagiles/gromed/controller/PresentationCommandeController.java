@@ -33,10 +33,9 @@ public class PresentationCommandeController {
 
 
 
-    @PutMapping("/{utilisateur}/")
-    public ResponseEntity<PresentationDeCommande> updateCommande(@PathVariable(value="utilisateur") long id, @RequestBody Presentation pres){
-        Utilisateur user = utilisateurRepository.findById(id).get();
-        return null;
+    @PostMapping("/addToCart")
+    public ResponseEntity<PresentationDeCommande> updateCommande(@RequestBody PresentationDeCommande pres){
+       return ResponseEntity.ok(repository.save(pres));
     }
 
 
