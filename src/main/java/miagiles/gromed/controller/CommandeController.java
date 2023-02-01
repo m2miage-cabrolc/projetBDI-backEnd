@@ -41,7 +41,7 @@ public class CommandeController {
     @GetMapping("/validerPanier")
     public ResponseEntity<String> validerPanier(String userMail){
         String res = commandeService.validerCommande(userMail);
-        if(!res.equals("Commande validée")){
+        if(!res.equals("Commande validée")&& !res.equals("Articles hors-stock")){
             return (ResponseEntity<String>) ResponseEntity.internalServerError();
         }
 

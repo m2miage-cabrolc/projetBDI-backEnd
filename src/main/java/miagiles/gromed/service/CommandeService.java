@@ -77,8 +77,9 @@ public class CommandeService {
                 presentationRepository.save(presentation);
 
             } catch(Exception e) {
-                if(e.getMessage().equals("Le stock logique ne peut pas �tre inf�rieur � 0")) {
-                    System.out.println("Impossible de diminuer le stock logique !");
+                if(e.getMessage().equals("Le stock logique ne peut pas être inférieur à 0")) {
+                    return "Articles hors-stock";
+                    //System.out.println("Impossible de diminuer le stock logique !");
                 }
             }
 
