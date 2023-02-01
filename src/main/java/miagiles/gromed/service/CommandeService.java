@@ -38,7 +38,7 @@ public class CommandeService {
         return commandeRepository.findAll();
     }
 
-    public void createCommande(Commande commande ) {
+    public void createPanier(String userMail) {
         try{
             Utilisateur utilisateur = utilisateurRepository.findByAdresseMail(userMail);
             Commande commande = new Commande();
