@@ -20,8 +20,6 @@ public interface PresentationRepository extends CrudRepository<Presentation, Lon
     Iterable<Presentation> findMedsByDenom (@Param("denom") String denom);
 
 
-    /*@Query("SELECT p.codeCIP7, pm.codeCIS from pres p join pres.medicaments pm")
-    HashMap<Long,Long> findPresMeds();*/
 
     Presentation findByCodeCIP7(Long codeCIP7);
 
