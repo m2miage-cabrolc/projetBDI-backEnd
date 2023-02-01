@@ -9,6 +9,7 @@ import miagiles.gromed.repository.CommandeRepository;
 import miagiles.gromed.repository.PresentationCommandeRepository;
 import miagiles.gromed.repository.UtilisateurRepository;
 import miagiles.gromed.repository.PresentationRepository;
+import org.slf4j.helpers.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,11 +39,15 @@ public class CommandeService {
         return commandeRepository.findAll();
     }
 
-    public void createCommande(Commande commande ) {
+    public void createPanier(String userMail) {
         try{
-
-
+            Utilisateur utilisateur = utilisateurRepository.findByAdresseMail(userMail);
+            Commande commande = new Commande();
+            commande.setEtatCommande("panier");
+            commande.setCommandeType(false);
             commandeRepository.save(commande);
+            utilisateur.addCommande(commande);
+            utilisateurRepository.save(utilisateur);
 
         }catch(Exception e){
             log.info("Creation failed");
