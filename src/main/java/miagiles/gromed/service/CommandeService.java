@@ -54,7 +54,7 @@ public class CommandeService {
         Utilisateur user = utilisateurRepository.findByAdresseMail(userMail);
         Commande panier =null ;
         for(Commande cmd : user.getCommandes()){
-            if(cmd.getEtatCommande().equals("Panier")){
+            if(cmd.getEtatCommande().equals("panier")){
                 panier=cmd;
             }
         }
