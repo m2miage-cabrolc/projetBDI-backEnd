@@ -27,8 +27,8 @@ public class CommandeController {
         return ResponseEntity.ok( commandeService.findAll() );
     }
     @PostMapping("/createCommande")
-    public void createCommande(@RequestBody Commande commande ){
-        commandeService.createCommande(commande);
+    public void createPanier(String userMail){
+        commandeService.createPanier(userMail);
     }
     @GetMapping("/getPanier")
     public ResponseEntity<Commande> getPanier(String userMail){
