@@ -6,11 +6,11 @@ import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.repository.MedicamentRepository;
 import miagiles.gromed.repository.PresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 
@@ -23,8 +23,9 @@ public class PresentationController {
 
 
     @GetMapping(value="/")
-    public ResponseEntity<Iterable<Presentation>> read(HttpServletResponse response) {
-        return ResponseEntity.ok( repository.findAll() );
+    public ResponseEntity<Page<Presentation>> read(HttpServletResponse response, @RequestParam int pageSize, @RequestParam int page) {
+        Pageable p = PageRequest.of(page,pageSize);
+        return ResponseEntity.ok( repository.findAll(p) );
     }
 
     @GetMapping(value="/{codeCIP7}")
