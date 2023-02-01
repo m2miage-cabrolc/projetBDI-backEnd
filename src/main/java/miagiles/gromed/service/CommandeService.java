@@ -12,6 +12,7 @@ import miagiles.gromed.repository.PresentationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -61,33 +62,47 @@ public class CommandeService {
         return panier;
     }
 
-    public String validerCommande(String userMail) {
+    public ArrayList<Integer> validerCommande(String userMail, boolean isForced) {
+        String retour = "Commande validée";
+        ArrayList<Integer> idPresentationManquante;
+        idPresentationManquante = new ArrayList<Integer>();
+        boolean isOnHold = false;
 
         Commande panier = getPanier(userMail);
         if(panier==null){
-            return "Erreur";
+            return null;//erreur interne
         }
         List<PresentationDeCommande> listPresentationCommande =presentationCommandeRepository.findByPresentationCommande_Commande(panier.getNumeroCommande());
 
-        for(PresentationDeCommande p : listPresentationCommande){
-
-            Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
-            try {
-                presentation.setStockLogique(presentation.getStockLogique()-p.getQuantite());
-                presentationRepository.save(presentation);
-
-            } catch(Exception e) {
-                if(e.getMessage().equals("Le stock logique ne peut pas être inférieur à 0")) {
-                    return "Articles hors-stock";
-                    //System.out.println("Impossible de diminuer le stock logique !");
+        //check ref manquantes
+        if(!isForced)
+        {
+            for (PresentationDeCommande p : listPresentationCommande) {
+                Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
+                if (presentation.getStockLogique() < p.getQuantite()) {
+                    isOnHold = true;
+                    idPresentationManquante.add((int) presentation.getCodeCIP7());
                 }
             }
+        }
+        if(isOnHold)
+        {
+            return idPresentationManquante;
+        }
 
-
+        for(PresentationDeCommande p : listPresentationCommande)
+        {
+            Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
+            presentation.setStockLogique(presentation.getStockLogique() - p.getQuantite());
+            presentationRepository.save(presentation);
         }
         panier.setEtatCommande("en cours");
         commandeRepository.save(panier);
 
-        return "Commande validée";
+        if(!idPresentationManquante.isEmpty())
+        {
+            retour = "Articles hors-stock";
+        }
+        return idPresentationManquante;
     }
 }

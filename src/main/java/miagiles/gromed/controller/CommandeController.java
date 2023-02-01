@@ -12,6 +12,8 @@ import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 
 @RestController
 @RequestMapping(value="/api/commandes")
@@ -39,13 +41,12 @@ public class CommandeController {
 
 
     @GetMapping("/validerPanier")
-    public ResponseEntity<String> validerPanier(String userMail){
-        String res = commandeService.validerCommande(userMail);
+    public ResponseEntity<ArrayList<Integer>> validerPanier(String userMail, boolean isForced){
+        ArrayList<Integer> res = commandeService.validerCommande(userMail, isForced);
         if(!res.equals("Commande validée")&& !res.equals("Articles hors-stock")){
 
-            return (ResponseEntity<String>) ResponseEntity.internalServerError();
+            return (ResponseEntity<ArrayList<Integer>>) ResponseEntity.internalServerError();
         }
-
         return ResponseEntity.ok(res);
     }
 }

@@ -1,14 +1,4 @@
-set transaction isolation level serializable;
-
-CREATE TRIGGER tr_Presentation_StockLogique
-    BEFORE UPDATE ON Presentation
-    FOR EACH ROW
-BEGIN
-    IF NEW.StockLogique < 0 THEN
-        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Le stock logique ne peut pas être inférieur à 0';
-END IF;
-END;
-
+set transaction isolation level READ COMMITTED;
 
 CREATE TRIGGER tr_Presentation_StockPhysique
     BEFORE UPDATE ON Presentation
