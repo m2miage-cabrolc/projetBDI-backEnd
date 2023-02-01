@@ -27,6 +27,11 @@ public class PresentationController {
         return ResponseEntity.ok( repository.findAll() );
     }
 
+    @GetMapping(value="/{codeCIP7}")
+    public ResponseEntity<Presentation> getById(@PathVariable(value="codeCIP7") long codeCIP7, HttpServletResponse httpServletResponse){
+        return ResponseEntity.ok(repository.findByCodeCIP7(codeCIP7));
+    }
+
     @GetMapping(value="/meds/{denom}")
     public ResponseEntity<Iterable<Presentation>> getMeds(@PathVariable(value="denom") String denom, HttpServletResponse response){
 
