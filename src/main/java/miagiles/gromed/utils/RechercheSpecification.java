@@ -10,11 +10,11 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-public class rechercheSpecification implements Specification<Medicament> {
+public class RechercheSpecification implements Specification<Medicament> {
     private String denomination;
     private Long codeCIS;
 
-    public rechercheSpecification(String denomination , Long codeCIS){
+    public RechercheSpecification(String denomination , Long codeCIS){
         this.denomination=denomination;
         this.codeCIS=codeCIS;
     }

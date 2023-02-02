@@ -1,10 +1,7 @@
 package miagiles.gromed.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
-import miagiles.gromed.entity.Commande;
-import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.entity.PresentationDeCommande;
-import miagiles.gromed.entity.Utilisateur;
 import miagiles.gromed.repository.PresentationCommandeRepository;
 import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.repository.UtilisateurRepository;

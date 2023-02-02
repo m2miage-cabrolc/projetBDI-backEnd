@@ -1,7 +1,6 @@
 package miagiles.gromed.controller;
 
 import miagiles.gromed.entity.Medicament;
-import miagiles.gromed.repository.MedicamentRepository;
 import miagiles.gromed.service.MedicamentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

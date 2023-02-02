@@ -10,9 +10,9 @@ public class PresentationService {
     @Autowired
     PresentationRepository presentationRepository;
 
-    public Presentation getPresentationByCIP7(Long CIP7)
+    public Presentation getPresentationByCIP7(Long cip7)
     {
-        return presentationRepository.findByCodeCIP7(CIP7);
+        return presentationRepository.findByCodeCIP7(cip7);
     }
 
 }
