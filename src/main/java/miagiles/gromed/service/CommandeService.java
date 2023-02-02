@@ -1,14 +1,12 @@
 package miagiles.gromed.service;
 
+import lombok.Builder;
 import lombok.extern.java.Log;
 import miagiles.gromed.entity.Commande;
 import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.entity.PresentationDeCommande;
 import miagiles.gromed.entity.Utilisateur;
-import miagiles.gromed.repository.CommandeRepository;
-import miagiles.gromed.repository.PresentationCommandeRepository;
-import miagiles.gromed.repository.UtilisateurRepository;
-import miagiles.gromed.repository.PresentationRepository;
+import miagiles.gromed.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,13 @@ import java.util.List;
 
 @Service
 @Log
+@Builder
+
 public class CommandeService {
+
+    @Autowired
+    PresentationDeCommandeRepository presentationDeCommandeRepository;
+
     @Autowired
     CommandeRepository commandeRepository;
 
@@ -67,12 +71,11 @@ public class CommandeService {
     }
 
     public ArrayList<Integer> validerCommande(String userMail, boolean isForced) {
-        String retour = "Commande validée";
         ArrayList<Integer> idPresentationManquante;
         idPresentationManquante = new ArrayList<Integer>();
         boolean isOnHold = false;
-
         Commande panier = getPanier(userMail);
+
         if(panier==null){
             return null;//erreur interne
         }
@@ -101,12 +104,14 @@ public class CommandeService {
             presentationRepository.save(presentation);
         }
         panier.setEtatCommande("en cours");
+
+        /*Commande commande = builder().
+        commande.setEtatCommande("panier");
+        commandeRepository.save(commande);*/
+
+
         commandeRepository.save(panier);
 
-        if(!idPresentationManquante.isEmpty())
-        {
-            retour = "Articles hors-stock";
-        }
         return idPresentationManquante;
     }
 }
