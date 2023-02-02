@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 
 
 @Repository
@@ -20,6 +21,10 @@ public interface PresentationRepository extends CrudRepository<Presentation, Lon
 
     @Query("SELECT p from pres p join p.medicaments m where m.denomination LIKE %:denom%")
     Iterable<Presentation> findMedsByDenom (@Param("denom") String denom);
+
+    List<Presentation> findByMedicaments(Medicament medicaments);
+
+
 
 
 

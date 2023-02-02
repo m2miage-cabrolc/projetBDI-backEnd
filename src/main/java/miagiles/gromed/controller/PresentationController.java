@@ -5,6 +5,7 @@ import miagiles.gromed.entity.Medicament;
 import miagiles.gromed.entity.Presentation;
 import miagiles.gromed.repository.MedicamentRepository;
 import miagiles.gromed.repository.PresentationRepository;
+import miagiles.gromed.service.PresentationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +20,9 @@ import java.util.HashMap;
 public class PresentationController {
     @Autowired
     private PresentationRepository repository;
+
+    @Autowired
+    private PresentationService presentationService;
 
 
 
@@ -38,6 +42,11 @@ public class PresentationController {
 
         return ResponseEntity.ok(repository.findMedsByDenom(denom));
 
+    }
+
+    @GetMapping("/filtre")
+    public List<Presentation> getPresentationsByFiltre(String denom , String formePharma){
+        return presentationService.getPresentationsByFiltre(denom,formePharma);
     }
 
     /*@GetMapping(value="/presmeds")
