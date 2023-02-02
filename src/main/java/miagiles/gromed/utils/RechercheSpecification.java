@@ -1,33 +1,32 @@
 package miagiles.gromed.utils;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import miagiles.gromed.entity.FormePharma;
 import miagiles.gromed.entity.Medicament;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class rechercheSpecification implements Specification<Medicament> {
+@AllArgsConstructor
+@NoArgsConstructor
+public class RechercheSpecification implements Specification<Medicament> {
     private String denomination;
-    private Long codeCIS;
+    private String formePharma;
 
-    public rechercheSpecification(String denomination , Long codeCIS){
-        this.denomination=denomination;
-        this.codeCIS=codeCIS;
-    }
+
     @Override
     public Predicate toPredicate(Root<Medicament> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
-
+        Join<FormePharma, Medicament> medicamentJoinFormePharma = root.join("formePharma", JoinType.INNER);
         if (denomination != null) {
             predicates.add(criteriaBuilder.like(root.get("denomination"),  denomination+"%"));
         }
 
-        if (codeCIS != null) {
-            predicates.add(criteriaBuilder.equal(root.get("codeCIS"),codeCIS ));
+        if (formePharma != null) {
+            predicates.add(criteriaBuilder.like(medicamentJoinFormePharma.get("libelle"),"%"+formePharma+"%" ));
         }
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));

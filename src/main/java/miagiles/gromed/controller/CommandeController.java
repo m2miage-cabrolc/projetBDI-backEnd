@@ -2,17 +2,14 @@ package miagiles.gromed.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import miagiles.gromed.entity.Commande;
-import miagiles.gromed.entity.Presentation;
-import miagiles.gromed.entity.PresentationDeCommande;
-import miagiles.gromed.repository.PresentationRepository;
 import miagiles.gromed.service.CommandeService;
-import miagiles.gromed.service.PresentationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 
 @RestController
@@ -41,8 +38,8 @@ public class CommandeController {
 
 
     @GetMapping("/validerPanier")
-    public ResponseEntity<ArrayList<Integer>> validerPanier(String userMail, boolean isForced){
-        ArrayList<Integer> res = commandeService.validerCommande(userMail, isForced);
+    public ResponseEntity<List<Integer>> validerPanier(String userMail, boolean isForced){
+        List<Integer> res = commandeService.validerCommande(userMail, isForced);
         return ResponseEntity.ok(res);
     }
 }

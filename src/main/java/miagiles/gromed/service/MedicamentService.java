@@ -2,7 +2,7 @@ package miagiles.gromed.service;
 
 import miagiles.gromed.entity.Medicament;
 import miagiles.gromed.repository.MedicamentRepository;
-import miagiles.gromed.utils.rechercheSpecification;
+import miagiles.gromed.utils.RechercheSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,5 @@ public class MedicamentService {
         return medicamentRepository.findAll();
     }
 
-    public List<Medicament> findMedicamentByFilter(String denomination , Long codeCIS){
-        return medicamentRepository.findAll(new rechercheSpecification(denomination,codeCIS));
-    }
+
 }

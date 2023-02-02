@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Service
 @Log
 @Builder
@@ -35,16 +34,15 @@ public class CommandeService {
     @Autowired
     PresentationRepository presentationRepository;
 
-     @Autowired
+    @Autowired
     PresentationCommandeRepository presentationCommandeRepository;
 
-    public Iterable<Commande> findAll(){
-
+    public Iterable<Commande> findAll() {
         return commandeRepository.findAll();
     }
 
     public void createPanier(String userMail) {
-        try{
+        try {
             Utilisateur utilisateur = utilisateurRepository.findByAdresseMail(userMail);
             Commande commande = new Commande();
             commande.setEtatCommande("panier");
@@ -53,7 +51,7 @@ public class CommandeService {
             utilisateur.addCommande(commande);
             utilisateurRepository.save(utilisateur);
 
-        }catch(Exception e){
+        } catch (Exception e) {
             log.info("Creation failed");
         }
 
@@ -61,29 +59,28 @@ public class CommandeService {
 
     public Commande getPanier(String userMail) {
         Utilisateur user = utilisateurRepository.findByAdresseMail(userMail);
-        Commande panier =null ;
-        for(Commande cmd : user.getCommandes()){
-            if(cmd.getEtatCommande().equals("panier")){
-                panier=cmd;
+        Commande panier = null;
+        for (Commande cmd : user.getCommandes()) {
+            if (cmd.getEtatCommande().equals("panier")) {
+                panier = cmd;
             }
         }
         return panier;
     }
 
-    public ArrayList<Integer> validerCommande(String userMail, boolean isForced) {
-        ArrayList<Integer> idPresentationManquante;
-        idPresentationManquante = new ArrayList<Integer>();
+    public List<Integer> validerCommande(String userMail, boolean isForced) {
+        List<Integer> idPresentationManquante;
+        idPresentationManquante = new ArrayList<>();
         boolean isOnHold = false;
         Commande panier = getPanier(userMail);
 
-        if(panier==null){
-            return null;//erreur interne
+        if (panier == null) {
+            return new ArrayList<>();
         }
-        List<PresentationDeCommande> listPresentationCommande =presentationCommandeRepository.findByPresentationCommande_Commande(panier.getNumeroCommande());
 
-        //check ref manquantes
-        if(!isForced)
-        {
+        List<PresentationDeCommande> listPresentationCommande = presentationCommandeRepository.findByPresentationCommandeCommande(panier.getNumeroCommande());
+
+        if (!isForced) {
             for (PresentationDeCommande p : listPresentationCommande) {
                 Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
                 if (presentation.getStockLogique() < p.getQuantite()) {
@@ -92,25 +89,19 @@ public class CommandeService {
                 }
             }
         }
-        if(isOnHold)
-        {
+
+        if (isOnHold) {
             return idPresentationManquante;
         }
 
-        for(PresentationDeCommande p : listPresentationCommande)
-        {
+        for (PresentationDeCommande p : listPresentationCommande) {
             Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
             presentation.setStockLogique(presentation.getStockLogique() - p.getQuantite());
             presentationRepository.save(presentation);
             presentationDeCommandeRepository.save(p);
         }
+
         panier.setEtatCommande("en cours");
-
-        /*Commande commande = builder().
-        commande.setEtatCommande("panier");
-        commandeRepository.save(commande);*/
-
-
         commandeRepository.save(panier);
 
         return idPresentationManquante;
