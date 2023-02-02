@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/api/commande_pres")
+@CrossOrigin
 public class PresentationCommandeController {
 
     @Autowired

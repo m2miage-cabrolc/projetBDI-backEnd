@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(value="/api/presentations")
 @RestController
+@CrossOrigin
 public class PresentationController {
     @Autowired
     private PresentationRepository repository;
