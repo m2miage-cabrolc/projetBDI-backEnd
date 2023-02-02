@@ -102,6 +102,7 @@ public class CommandeService {
             Presentation presentation = presentationService.getPresentationByCIP7(p.getPresentationCommande().getPresentation());
             presentation.setStockLogique(presentation.getStockLogique() - p.getQuantite());
             presentationRepository.save(presentation);
+            presentationDeCommandeRepository.save(p);
         }
         panier.setEtatCommande("en cours");
 
