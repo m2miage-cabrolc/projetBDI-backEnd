@@ -40,15 +40,5 @@ public class Utilisateur {
     }
 
 
-    public Commande getPanier(){
-        Commande res = null;
-        for (Commande c : this.commandes){
-            if(c.getEtatCommande().equals("Panier")){
-                res = c;
-            }
-        }
-        return res;
-    }
-
 
 }
